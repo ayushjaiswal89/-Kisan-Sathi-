@@ -1,0 +1,8 @@
+{
+  "name": "Remix Kisan Sathi - Farm Ledger \u0026 Mandi",
+  "description": "Smart digital farm ledger, realized profit calculator, batai partnership accounts, mandi rates, and crop inventory for farmers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

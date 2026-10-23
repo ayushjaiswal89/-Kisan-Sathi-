@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --sk-bg: #09110d;
+    --sk-card: #0f1c16;
+    --sk-card2: #14251e;
+    --sk-border: #1e382b;
+    --sk-text: #f0fdf4;
+    --sk-text2: #dcfce7;
+    --sk-muted: #86efac;
+    --sk-faint: #4ade80;
+    --sk-dim: #64748b;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: var(--sk-bg);
+    color: var(--sk-text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+}
+
+/* Custom scrollbars for tables and views */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f1c16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e382b;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2e5440;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Mobile Safe-Area padding */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+/* HIGH-RESOLUTION CLEAN PRINT STYLES */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    min-height: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* When printing from report modal, hide EVERYTHING except the report itself */
+  body.print-modal-open * {
+    visibility: hidden;
+  }
+
+  body.print-modal-open #printable-farm-report,
+  body.print-modal-open #printable-farm-report * {
+    visibility: visible;
+  }
+
+  body.print-modal-open #printable-farm-report {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 6mm !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Hide app header, mobile bottom nav, floating buttons and tickers */
+  header,
+  nav,
+  footer,
+  [aria-label="Mobile Navigation"],
+  .fixed.right-3\.5,
+  .print-hidden,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Avoid breaking inside table rows and KPI cards */
+  tr, .kpi-card, thead {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
